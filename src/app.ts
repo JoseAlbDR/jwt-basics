@@ -1,12 +1,12 @@
 import express from "express";
 import notFoundMiddleware from "./middleware/not-found";
 import errorHandlerMiddleware from "./middleware/error-handler";
-import dbConnect from "./db/connect";
+// import dbConnect from "./db/connect";
 
 const app = express();
 
 // middleware
-app.use(express.static("./public"));
+app.use(express.static("./src/public"));
 app.use(express.json());
 
 app.use(notFoundMiddleware);
@@ -14,9 +14,9 @@ app.use(errorHandlerMiddleware);
 
 const port = process.env.PORT || 3000;
 
-const start = async () => {
+const start = () => {
   try {
-    await dbConnect();
+    // await dbConnect();
     console.log("CONNECTED TO THE DB...");
     app.listen(port, () => {
       console.log(`Server is listening on ${port}...`);
