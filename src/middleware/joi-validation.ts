@@ -3,7 +3,7 @@ import { validateUserData } from "../utils/validation";
 import CustomAPIError from "../errors/custom-error";
 import { ILoginRequest } from "../types/interfaces";
 
-const validateLoginQuery = (
+const validateLoginQuery = async (
   req: ILoginRequest,
   _res: Response,
   next: NextFunction
