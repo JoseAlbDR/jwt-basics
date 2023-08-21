@@ -10,7 +10,7 @@ const app = express();
 // middleware
 app.use(express.static("./src/public"));
 app.use(express.json());
-app.use(validateLoginQuery);
+app.use("/api/v1/login", validateLoginQuery);
 app.use("/api/v1", router);
 app.use(notFoundMiddleware);
 app.use(errorHandlerMiddleware);
