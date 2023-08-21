@@ -13,6 +13,7 @@ declare global {
       [key: string]: string | undefined;
       PORT: string;
       DATABASE_URL: string;
+      JWT_SECRET: string;
     }
   }
 }
