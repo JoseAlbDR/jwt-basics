@@ -9,7 +9,9 @@ const errorHandlerMiddleware = (
   if (err instanceof CustomAPIError) {
     return res.status(err.statusCode).json({ msg: err.message });
   }
-  return res.status(500).send("Something went wrong try again later");
+  return res
+    .status(500)
+    .json({ message: "Something went wrong try again later", error: err });
 };
 
 export default errorHandlerMiddleware;
