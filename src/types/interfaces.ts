@@ -8,3 +8,10 @@ export interface ILoginBody {
 export interface ILoginRequest extends Request {
   body: ILoginBody;
 }
+
+export interface IDecodedToken {
+  id: number;
+  username: string;
+  iat: number;
+  exp: number;
+}
