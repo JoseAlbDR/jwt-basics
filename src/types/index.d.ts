@@ -6,6 +6,10 @@ declare global {
   namespace Express {
     interface Request {
       loginQuery: ILoginBody;
+      user: {
+        id: number;
+        username: string;
+      };
     }
   }
   namespace NodeJS {
