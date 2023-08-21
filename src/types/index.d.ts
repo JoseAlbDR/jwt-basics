@@ -1,8 +1,12 @@
+import { ILoginBody } from "./interfaces";
+
 export {};
 
 declare global {
   namespace Express {
-    interface Request {}
+    interface Request {
+      loginQuery: ILoginBody;
+    }
   }
   namespace NodeJS {
     interface ProcessEnv {
