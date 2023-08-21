@@ -1,12 +1,12 @@
 import { NextFunction, Request, Response } from "express";
-import { BadRequestError, UnauthenticatedError } from "../errors";
+import { CustomAPIError } from "../errors";
 const errorHandlerMiddleware = (
   err: Error,
   _req: Request,
   res: Response,
   _next: NextFunction
 ) => {
-  if (err instanceof BadRequestError || err instanceof UnauthenticatedError) {
+  if (err instanceof CustomAPIError) {
     return res.status(err.statusCode).json({ msg: err.message });
   }
   return res
