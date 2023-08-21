@@ -1,6 +1,6 @@
 import { Request } from "express";
 
-interface ILoginBody {
+export interface ILoginBody {
   username: string;
   password: number;
 }
