@@ -4,13 +4,12 @@ import notFoundMiddleware from "./middleware/not-found";
 import errorHandlerMiddleware from "./middleware/error-handler";
 // import dbConnect from "./db/connect";
 import router from "./routes/main";
-import validateLoginQuery from "./middleware/joi-validation";
+
 const app = express();
 
 // middleware
 app.use(express.static("./src/public"));
 app.use(express.json());
-app.use("/api/v1/login", validateLoginQuery);
 app.use("/api/v1", router);
 app.use(notFoundMiddleware);
 app.use(errorHandlerMiddleware);
