@@ -1,7 +1,7 @@
 import { NextFunction, Response } from "express";
 import { validateUserData } from "../utils/validation";
-import CustomAPIError from "../errors/custom-error";
 import { ILoginRequest } from "../types/interfaces";
+import { BadRequestError } from "../errors";
 
 const validateLoginQuery = async (
   req: ILoginRequest,
@@ -15,7 +15,7 @@ const validateLoginQuery = async (
     const messages = valid.error.details.map(
       (detail): string => detail.message
     );
-    throw new CustomAPIError(messages.join(" "), 400);
+    throw new BadRequestError(messages.join(" "));
   }
 
   req.loginQuery = valid.value;

@@ -1,7 +1,7 @@
 import { NextFunction, Request, Response } from "express";
 import jwt from "jsonwebtoken";
-import CustomAPIError from "../errors/custom-error";
 import { IDecodedToken } from "../types/interfaces";
+import { UnauthenticatedError } from "../errors";
 const authenticationMiddleware = async (
   req: Request,
   _res: Response,
@@ -9,7 +9,7 @@ const authenticationMiddleware = async (
 ) => {
   const authHeader = req.headers.authorization;
   if (!authHeader === null || !authHeader?.startsWith("Bearer ")) {
-    throw new CustomAPIError("No token provided", 401);
+    throw new UnauthenticatedError("No token provided");
   }
 
   const token = authHeader.split(" ").at(1);
@@ -26,7 +26,7 @@ const authenticationMiddleware = async (
       next();
     }
   } catch (error) {
-    throw new CustomAPIError("No authorized to access this route", 401);
+    throw new UnauthenticatedError("No authorized to access this route");
   }
 };
 
