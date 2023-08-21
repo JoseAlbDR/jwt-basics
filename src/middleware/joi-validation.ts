@@ -9,7 +9,6 @@ const validateLoginQuery = (
   next: NextFunction
 ) => {
   const { body } = req;
-  console.log(body);
   const valid = validateUserData(body);
 
   if (valid.error) {
